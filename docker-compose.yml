@@ -1,0 +1,11 @@
+version: '3.6'
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+    - "/dev:/dev" # https://github.com/moby/moby/issues/27886
+    - ".:/opt"
+    privileged: true
+    

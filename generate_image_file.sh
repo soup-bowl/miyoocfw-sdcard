@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-
-# Determine the version if it's not set
-# If we're on a tagged commit, then this is just the tag
-# Otherwise it's the last tag, then the number of commits since that tag, then the current hash
-# Finally, if there are uncommitted changes, -dirty is appended
-# If there are no git tags, fall back to just the short hash
-VERSION="${VERSION:-$(git describe --tags --dirty || git rev-parse --short HEAD)}"
+# Dumbed down from main fork repo - Git in Docker complains of security issues.
+VERSION="$(date +%s)"
 
 ROOTDIR="."
 UBOOTBIN="${ROOTDIR}/boot/misc/u-boot-bins/u-boot-v90_q90_pocketgo.bin"
