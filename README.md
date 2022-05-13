@@ -10,6 +10,20 @@ By default, it is aimed at Powkiddy V90 or Q90. You can change which handheld it
 
 When booted for the _first time_, the boot splash logo may be upside-down or even not appearing at all; in any case please wait about 30 seconds (maybe more if your sd card is big) or until you see the screen turn off,  and then turn the handheld off. The subsequent boots should be "normal".
 
+## Build via Docker
+
+Run either command to build the image using Docker.
+
+```bash
+sudo docker-compose up --build
+```
+
+```bash
+sudo docker build -t powcfw:latest . && sudo docker run -it -v "/dev:/dev" -v "$(pwd):/opt" --privileged powcfw:latest
+```
+
+`sudo` & `privilege` modes are required due to the disk manipulation going on. The system dev (at least on Ubuntu) needs to be bound [due to a bug in Moby](https://github.com/moby/moby/issues/27886).
+
 ## Description of various parts of what is here
 
 There are essentially four "ingredients" that go into the image: __u-boot__ (the bootloader), __the kernel__ plus modules and support programs, __root filesystem__, and __apps/emulators/ports,...__
