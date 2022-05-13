@@ -19,7 +19,8 @@ sudo docker-compose up --build
 ```
 
 ```bash
-sudo docker build -t powcfw:latest . && sudo docker run -it -v "/dev:/dev" -v "$(pwd):/opt" --privileged powcfw:latest
+sudo docker build -t powcfw:latest
+sudo docker run -it -v "/dev:/dev" -v "$(pwd):/opt" --privileged powcfw:latest
 ```
 
 `sudo` & `privilege` modes are required due to the disk manipulation going on. The system dev (at least on Ubuntu) needs to be bound [due to a bug in Moby](https://github.com/moby/moby/issues/27886).
