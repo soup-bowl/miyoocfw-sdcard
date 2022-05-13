@@ -7,7 +7,7 @@ START="${HOME}/autoexec.sh"
 
 BOOTDIR=/boot # we expect /dev/mmcblk0p1 has been mounted here read only, from inittab
 LOGS=/dev/null
-#LOGS=/mnt/log.txt
+LOGS=/mnt/log.txt
 # can use /mnt/log.txt here, but note that this prevents clean shutdowns - so only use this for debugging
 export LOGS # so that subshells can use this as well
 
@@ -104,8 +104,10 @@ do
         source "${START}"
     else
 
-        cd "${HOME}"/gmenu2x;
-        ./gmenu2x >> "${LOGS}" 2>&1;
+        cd "${HOME}"/emus/retroarch;
+        ./retroarch >> "${LOGS}" 2>&1;
+        echo $?;
+        sleep 20;
     fi
     clear
 done
